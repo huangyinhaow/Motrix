@@ -2,9 +2,8 @@ name: Build/release
 
 on:
   push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   release:
@@ -39,7 +38,7 @@ jobs:
       - name: Build/release Electron app
         uses: motrixapp/action-electron-builder@v2
         with:
-          build_script_name: 'build:github'
+          build_script_name: "build:github"
           # GitHub token, automatically provided to the action
           # (No need to define this secret in the repo settings)
           github_token: ${{ secrets.github_token }}
